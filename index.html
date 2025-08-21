@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <meta name="keywords" content="Dani Tech, Dani Technology, Dani Joest, Inovixa, ForestAPI, UniShop, Full Stack Developer, Payment Gateway, API" />
+  <meta name="description" content="Professional profile of Dani Joest, Chief Executive Officer (CEO) and Founder of Inovixa Technologies - Project Manager & Full-Stack Developer specializing in web development and automation systems." />
+  <meta name="author" content="Dani Joest" />
+  <title>Dani Joest - Personal Profile</title>
+  
+  <meta property="og:title" content="Dani Joest - Personal Profile">
+  <meta property="og:description" content="Professional profile of Dani Joest, Chief Executive Officer (CEO) and Founder of Inovixa Technologies - Project Manager & Full-Stack Developer specializing in web development and automation systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://danidev.web.id">
+  <meta property="og:image" content="https://danidev.web.id/media/profile-picture.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Dani Joest - Personal Profile">
+    	
+  <link rel="shortcut icon" type="image/png" href="/media/favicon.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script>
+    tailwind.config = { darkMode: 'class' }
+  </script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Theme variables */
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --muted: #6b7280;
+      --text: #0f1724;
+      --accent-a: #2dd4bf;
+      --accent-b: #7c5cff;
+      --glass: rgba(255,255,255,0.6);
+      --input-shadow: 0 6px 18px rgba(16,24,40,0.03);
+    }
+    .dark {
+      --bg: #0b1220;
+      --card: #0f1b2b;
+      --muted: #9fb0c8;
+      --text: #e6f0fb;
+      --accent-a: #39c5b3;
+      --accent-b: #7c5cff;
+      --glass: rgba(20,28,40,0.55);
+      --input-shadow: 0 6px 18px rgba(2,6,23,0.5);
+    }
+
+    body { background: var(--bg); color: var(--text); font-family: Inter, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; transition: background .24s ease, color .24s ease; }
+
+    /* Common UI */
+    .gradient-text { background-clip: text; -webkit-background-clip: text; color: transparent; background-image: linear-gradient(90deg,var(--accent-a),var(--accent-b)); }
+    .card { border-radius: 12px; border: 1px solid rgba(255,255,255,0.04); }
+    .card-hover { transition: transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s, border-color .28s; }
+    .card-hover:hover { transform: translateY(-8px); box-shadow: 0 20px 40px rgba(2,6,23,0.28); }
+
+    /* Improved input styles (modern, dark-friendly) */
+    input[type="text"], input[type="email"], input[type="tel"], select, textarea {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border: 1px solid rgba(15,23,36,0.06);
+      padding: .75rem 1rem;
+      border-radius: 10px;
+      box-shadow: var(--input-shadow);
+      color: var(--text);
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+      width: 100%;
+    }
+
+    /* Dark-specific input look: subtle glass panel with inward depth */
+    .dark input[type="text"], .dark input[type="email"], .dark input[type="tel"], .dark select, .dark textarea {
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 24px rgba(2,6,23,0.45);
+      color: var(--text);
+    }
+
+    input:focus, select:focus, textarea:focus { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(2,6,23,0.08); border-color: rgba(57,197,179,0.32); }
+
+    /* Reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px) scale(.995); transition: opacity .72s ease, transform .72s cubic-bezier(.2,.9,.3,1); }
+    .reveal.revealed { opacity: 1; transform: none; }
+
+    .nav-underline { position: relative; }
+    .nav-underline::after { content: ''; position: absolute; left: 0; bottom: -6px; height: 3px; width: 0; border-radius: 6px; background: linear-gradient(90deg,var(--accent-a),var(--accent-b)); transition: width .34s cubic-bezier(.2,.9,.3,1); }
+    .nav-underline:hover::after, .nav-underline:focus::after { width: 100%; }
+
+    .social-icon { transition: transform .28s, box-shadow .28s; }
+    .social-icon:hover { transform: translateY(-6px) scale(1.06); box-shadow: 0 10px 30px rgba(2,6,23,0.14); }
+
+    #scroll-progress { position: fixed; top: 0; left: 0; height: 4px; width: 0; background: linear-gradient(90deg,var(--accent-a),var(--accent-b)); z-index: 60; transition: width .12s linear; }
+
+    /* Off-canvas right panel for mobile nav */
+    .offcanvas { position: fixed; top: 0; right: 0; height: 100vh; width: 320px; max-width: 85vw; background: var(--card); box-shadow: -20px 0 40px rgba(2,6,23,0.28); transform: translateX(110%); transition: transform .36s cubic-bezier(.2,.9,.3,1); z-index: 60; padding: 1.25rem; overflow-y: auto; border-left: 1px solid rgba(0,0,0,0.06); }
+    .offcanvas.open { transform: translateX(0); }
+    .offcanvas .close-btn { position: absolute; top: 12px; left: 12px; }
+
+    .offcanvas-backdrop { position: fixed; inset: 0; background: rgba(2,6,23,0.46); opacity: 0; pointer-events: none; transition: opacity .24s; z-index: 50; }
+    .offcanvas-backdrop.visible { opacity: 1; pointer-events: auto; }
+
+    /* Scroll-to-top button */
+    .scroll-top { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 70; width: 48px; height: 48px; border-radius: 12px; display: grid; place-items: center; background: linear-gradient(135deg,var(--accent-a),var(--accent-b)); color: white; box-shadow: 0 10px 30px rgba(2,6,23,0.18); transform: translateY(16px) scale(.96); opacity: 0; transition: opacity .28s, transform .28s; cursor: pointer; }
+    .scroll-top.show { opacity: 1; transform: translateY(0) scale(1); }
+    .scroll-top:active { transform: translateY(1px) scale(.98); }
+
+    /* cosmetic */
+    @media (max-width: 640px) { .profile-badge { font-size: .65rem; padding: .25rem .6rem; } }
+    @media (prefers-reduced-motion: reduce) { .reveal, .card-hover, .social-icon, .offcanvas { transition: none !important; animation: none !important; } }
+  </style>
+</head>
+
+<body class="antialiased min-h-screen transition-colors duration-300">
+  <div id="scroll-progress"></div>
+
+  <!-- NAV -->
+  <nav class="fixed top-0 left-0 right-0 w-full bg-opacity-70 z-50 border-b" style="backdrop-filter: blur(6px);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16 items-center">
+        <div class="flex items-center">
+          <a href="#" class="text-xl md:text-2xl font-extrabold gradient-text">Dani Joest</a>
+        </div>
+
+        <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+          <a href="#about" class="nav-underline text-sm lg:text-base">About</a>
+          <a href="#experience" class="nav-underline text-sm lg:text-base">Experience</a>
+          <a href="#contact" class="nav-underline text-sm lg:text-base">Contact</a>
+          <a href="https://inovixa.web.id" class="nav-underline text-sm lg:text-base">Company Profile</a>
+
+          <button id="theme-toggle" class="p-2 rounded-xl bg-[color:var(--card)] shadow-sm flex items-center gap-2" aria-label="Toggle theme">
+            <i id="theme-icon" class="fas fa-sun text-yellow-400"></i>
+            <span id="theme-text" class="text-sm hidden md:inline">Light</span>
+          </button>
+        </div>
+
+        <div class="md:hidden flex items-center gap-2">
+          <!-- mobile theme toggle moved next to hamburger -->
+          <button id="mobile-theme-button" class="p-2 rounded-xl bg-[color:var(--card)] shadow-sm" aria-label="Toggle theme (mobile)">
+            <i id="mobile-theme-icon" class="fas fa-sun text-yellow-400"></i>
+          </button>
+
+          <button id="mobile-menu-button" aria-controls="mobile-offcanvas" aria-expanded="false" class="p-2 rounded-xl bg-[color:var(--card)] shadow-sm" aria-label="Open menu">
+            <i class="fas fa-bars"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Offcanvas mobile nav (right) -->
+  <aside id="mobile-offcanvas" class="offcanvas" aria-hidden="true" role="dialog" aria-label="Mobile Navigation">
+    <button class="close-btn p-2 rounded-md" aria-label="Close menu"><i class="fas fa-times"></i></button>
+    <div class="mt-6">
+      <nav class="flex flex-col gap-4">
+        <a href="#about" class="off-link text-[color:var(--text)] text-lg font-medium">About</a>
+        <a href="#experience" class="off-link text-[color:var(--text)] text-lg font-medium">Experience</a>
+        <a href="#contact" class="off-link text-[color:var(--text)] text-lg font-medium">Contact</a>
+        <a href="https://inovixa.web.id" class="on-link text-[color:var(--text)] text-lg font-medium">Company Profile</a>
+      </nav>
+
+      <div class="mt-8">
+        <!-- mobile theme button removed inside panel to avoid duplication -->
+      </div>
+    </div>
+  </aside>
+
+  <div id="offcanvas-backdrop" class="offcanvas-backdrop" onclick="closeOffcanvas()" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <section id="home" class="pt-24" aria-label="Hero">
+    <div class="min-h-[calc(100vh-4rem)] flex items-center">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+        <div class="flex flex-col md:flex-row items-center gap-8">
+          <div class="md:w-7/12 order-2 md:order-1 text-center md:text-left reveal" data-reveal>
+            <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold leading-tight mb-4">Hi, I'm <span class="gradient-text">Dani Joest</span></h1>
+            <h2 class="text-lg sm:text-xl md:text-2xl font-semibold mb-4" style="color:var(--accent-a);">Founder &amp; CEO at PT Inovixa Technologies Solution</h2>
+
+            <p class="text-base sm:text-lg text-[color:var(--muted)] mb-6">I'm a results-driven Full-Stack Developer and Software Engineer with strong experience designing and building scalable web services, payment gateway APIs, and enterprise web applications. I lead product and engineering teams to deliver reliable, secure, and maintainable solutions — from early prototyping to production-grade deployments. My work spans API architecture (REST/JSON), infrastructure automation, and integrations for e-money and top-up systems.</p>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#contact" class="inline-flex items-center gap-3 bg-[color:var(--accent-a)] hover:opacity-95 text-white font-medium py-3 px-6 rounded-lg transition shadow-md">Contact Me</a>
+              <div class="flex gap-2">
+                <button onclick="downloadCV('en')" class="bg-[color:var(--card)] hover:opacity-95 text-[color:var(--text)] font-medium py-3 px-4 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center"> <i class="fas fa-download mr-2"></i> CV (EN) </button>
+                <button onclick="downloadCV('id')" class="bg-[color:var(--card)] hover:opacity-95 text-[color:var(--text)] font-medium py-3 px-4 rounded-lg border border-gray-200 shadow-sm flex items-center justify-center"> <i class="fas fa-download mr-2"></i> CV (ID) </button>
+              </div>
+            </div>
+
+            <div class="mt-6 mb-6 flex flex-wrap gap-3 text-[color:var(--muted)]">
+              <span class="bg-[color:var(--card)] px-4 py-2 rounded-full text-sm font-medium shadow-sm">50+ Projects</span>
+              <span class="bg-[color:var(--card)] px-4 py-2 rounded-full text-sm font-medium shadow-sm">5+ Years Experience</span>
+              <span class="bg-[color:var(--card)] px-4 py-2 rounded-full text-sm font-medium shadow-sm">Full-Stack Development</span>
+            </div>
+          </div>
+
+          <div class="md:w-5/12 flex justify-center order-1 md:order-2 reveal" data-reveal>
+            <div class="relative" style="transform-style: preserve-3d;">
+              <img src="./media/profile-picture.jpg" alt="Dani Joest" class="w-56 h-56 sm:w-64 sm:h-64 md:w-72 md:h-72 rounded-full object-cover border-4 border-[color:var(--card)] shadow-xl animate-float" data-parallax="0.15">
+              <div class="absolute -bottom-3 -right-3 bg-[color:var(--accent-a)] text-white px-3 py-1 rounded-full shadow-lg profile-badge text-sm md:text-base">CEO</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal" data-reveal>
+        <h2 class="text-3xl font-bold mb-4">About Me</h2>
+        <div class="w-20 h-1 mx-auto" style="background: linear-gradient(90deg,var(--accent-a),var(--accent-b));"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8 items-start">
+        <div class="reveal" data-reveal>
+          <h3 class="text-xl font-semibold mb-4">Professional Summary</h3>
+          <p class="text-lg text-[color:var(--muted)] mb-4">Seasoned Full-Stack Developer &amp; Software Engineer with proven experience in building production-grade web applications, RESTful APIs, and payment gateway integrations. Experienced in cloud architecture, containerization, and CI/CD for reliable deployments. Comfortable leading engineering teams and collaborating with product and business stakeholders to deliver measurable value.</p>
+
+          <p class="text-lg text-[color:var(--muted)] mb-4">Key achievements include launching ForestAPI (payment gateway) features, building UniShop topup services, and delivering custom web topup systems integrated with QRIS and multiple e-money providers.</p>
+
+          <div class="mt-6 grid grid-cols-3 gap-3">
+            <div class="p-4 rounded-lg card-hover card" style="background:var(--card);">
+              <span class="font-medium text-[color:var(--accent-a)]">50+</span>
+              <p class="text-[color:var(--muted)] text-sm">Projects</p>
+            </div>
+            <div class="p-4 rounded-lg card-hover card" style="background:var(--card);">
+              <span class="font-medium text-[color:var(--accent-a)]">100%</span>
+              <p class="text-[color:var(--muted)] text-sm">Client Satisfaction</p>
+            </div>
+            <div class="p-4 rounded-lg card-hover card" style="background:var(--card);">
+              <span class="font-medium text-[color:var(--accent-a)]">5+</span>
+              <p class="text-[color:var(--muted)] text-sm">Years Experience</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 gap-4">
+          <div class="p-6 rounded-xl card-hover card">
+            <div class="flex items-start">
+              <div class="text-[color:var(--accent-a)] text-3xl mr-4"><i class="fas fa-code"></i></div>
+              <div>
+                <h4 class="font-semibold mb-2">Core Competencies</h4>
+                <ul class="text-[color:var(--muted)] text-sm space-y-1 list-disc list-inside">
+                  <li>Full-Stack Web Development (frontend &amp; backend)</li>
+                  <li>RESTful API design, JSON APIs, Webhook integrations</li>
+                  <li>Payment gateway integration (QRIS, e-money integrations, payment APIs)</li>
+                  <li>System architecture, scalability, and performance optimization</li>
+                  <li>CI/CD, containerization, and cloud deployments</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-6 rounded-xl card-hover card">
+            <div class="flex items-start">
+              <div class="text-[color:var(--accent-b)] text-3xl mr-4"><i class="fas fa-project-diagram"></i></div>
+              <div>
+                <h4 class="font-semibold mb-2">Selected Projects</h4>
+                <p class="text-[color:var(--muted)] text-sm">ForestAPI (payment gateway), UniShop (topup &amp; voucher platform), multiple enterprise web apps and e-commerce platforms. Delivered APIs and dashboards for resellers and customers.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal" data-reveal>
+        <h2 class="text-3xl font-bold mb-4">Experience &amp; Education</h2>
+        <div class="w-20 h-1 mx-auto" style="background: linear-gradient(90deg,var(--accent-a),var(--accent-b));"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal" data-reveal>
+          <h3 class="text-xl font-semibold mb-6 flex items-center"><span class="p-2 rounded-full mr-3" style="background:rgba(57,197,179,0.08);color:var(--accent-a)"><i class="fas fa-briefcase"></i></span>Work Experience</h3>
+
+          <div class="space-y-6">
+            <div class="p-6 rounded-xl card-hover card">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold">Founder &amp; CEO</h4>
+                <span class="text-xs px-2 py-1 rounded" style="background:rgba(57,197,179,0.08);color:var(--accent-a)">Present</span>
+              </div>
+              <p class="text-[color:var(--accent-a)] font-medium mb-2">PT Inovixa Technologies Solution</p>
+              <p class="text-[color:var(--muted)] text-sm mb-3">Leading strategic direction, product development, and technology innovation for payment and API services.</p>
+              <ul class="text-[color:var(--muted)] text-sm list-disc list-inside space-y-1">
+                <li>Developed ForestAPI payment gateway features and integrations.</li>
+                <li>Built UniShop topup &amp; voucher services and reseller dashboards.</li>
+                <li>Managed cross-functional engineering and operations teams.</li>
+              </ul>
+            </div>
+
+            <div class="p-6 rounded-xl card-hover card">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold">Full-Stack Developer (Freelance)</h4>
+                <span class="text-xs px-2 py-1 rounded" style="background:rgba(100,116,139,0.06);color:var(--muted)">2021-2024</span>
+              </div>
+              <p class="text-[color:var(--accent-a)] font-medium mb-2">Various Clients</p>
+              <p class="text-[color:var(--muted)] text-sm mb-3">Delivered custom web applications and integrations for e-commerce and enterprise clients.</p>
+              <ul class="text-[color:var(--muted)] text-sm list-disc list-inside space-y-1">
+                <li>Built e-commerce platforms and custom CMS.</li>
+                <li>Implemented payment integrations and automated topup systems.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal" data-reveal>
+          <h3 class="text-xl font-semibold mb-6 flex items-center"><span class="p-2 rounded-full mr-3" style="background:rgba(124,92,255,0.06);color:var(--accent-b)"><i class="fas fa-graduation-cap"></i></span>Education</h3>
+          <div class="space-y-6">
+            <div class="p-6 rounded-xl card-hover card">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold">Computer Science</h4>
+                <span class="text-xs px-2 py-1 rounded" style="background:rgba(100,116,139,0.06);color:var(--muted)">2021-2025</span>
+              </div>
+              <p class="text-[color:var(--accent-a)] font-medium mb-2">Universitas Terbuka</p>
+              <p class="text-[color:var(--muted)] text-sm">Specialized in Software Engineering and Web Development.</p>
+            </div>
+
+            <div class="p-6 rounded-xl card-hover card">
+              <div class="flex justify-between items-start mb-2">
+                <h4 class="font-bold">Certifications</h4>
+              </div>
+              <ul class="text-[color:var(--muted)] text-sm space-y-2">
+                <li>AWS Certified Developer - Associate</li>
+                <li>Google Professional Cloud Architect</li>
+                <li>Microsoft Certified: Azure Solutions Architect</li>
+              </ul>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mt-10 mb-6 flex items-center"><span class="p-2 rounded-full mr-3" style="background:rgba(57,197,179,0.08);color:var(--accent-a)"><i class="fas fa-tools"></i></span>Technical Skills</h3>
+
+          <div class="p-6 rounded-xl card-hover card">
+            <div class="space-y-6">
+              <div>
+                <h4 class="font-medium mb-3">Frontend</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">HTML</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">CSS</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Tailwind CSS</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">JavaScript (ES6+)</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">TypeScript</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">React</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Next.js</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Vue.js</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-medium mb-3">Backend</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Node.js</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Express</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">PHP (native &amp; Slim)</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Python</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Django</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">REST API</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-medium mb-3">Databases</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">MySQL</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">PostgreSQL</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Redis</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-medium mb-3">Cloud &amp; DevOps</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">AWS</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Azure</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">GCP</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Docker</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Kubernetes</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">CI/CD</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-medium mb-3">Tools &amp; Other</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Git</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">RESTful APIs</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">JSON</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Payment Gateway Integration</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Monitoring &amp; Logging</span>
+                </div>
+              </div>
+
+              <div>
+                <h4 class="font-medium mb-3">Soft Skills</h4>
+                <div class="flex flex-wrap gap-2 text-[color:var(--muted)]">
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Team Leadership</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Product Management</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Agile</span>
+                  <span class="px-3 py-1 rounded-full text-sm" style="background:rgba(148,163,184,0.04)">Communication</span>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="py-16">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12 reveal" data-reveal>
+        <h2 class="text-3xl font-bold mb-4">Get In Touch</h2>
+        <div class="w-20 h-1 mx-auto" style="background: linear-gradient(90deg,var(--accent-a),var(--accent-b));"></div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="reveal" data-reveal>
+          <h3 class="text-xl font-semibold mb-6">Contact Information</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(57,197,179,0.06);color:var(--accent-a)"><i class="fas fa-envelope"></i></div>
+              <div>
+                <h4 class="font-medium">Email</h4>
+                <a href="mailto:dani.joest.id@gmail.com" class="text-[color:var(--muted)] hover:text-[color:var(--accent-a)] transition">dani.joest.id@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(57,197,179,0.06);color:var(--accent-a)"><i class="fab fa-whatsapp"></i></div>
+              <div>
+                <h4 class="font-medium">WhatsApp</h4>
+                <a href="https://wa.me/+6282320667363" class="text-[color:var(--muted)] hover:text-[color:var(--accent-a)] transition">+62 823-2066-7363</a>
+              </div>
+            </div>
+            
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(57,197,179,0.06);color:var(--accent-a)"><i class="fab fa-telegram"></i></div>
+              <div>
+                <h4 class="font-medium">Telegram</h4>
+                <a href="https://t.me/dani_joest" class="text-[color:var(--muted)] hover:text-[color:var(--accent-a)] transition">@dani_joest</a>
+              </div>
+            </div>
+
+            <div class="flex items-start">
+              <div class="p-3 rounded-full mr-4" style="background:rgba(57,197,179,0.06);color:var(--accent-a)"><i class="fas fa-map-marker-alt"></i></div>
+              <div>
+                <h4 class="font-medium">Location</h4>
+                <p class="text-[color:var(--muted)]">Bogor, Indonesia</p>
+              </div>
+            </div>
+          </div>
+
+          <h3 class="text-xl font-semibold mt-10 mb-6">Social Media</h3>
+          <div class="flex space-x-3">
+            <a href="https://www.linkedin.com/in/dani-techno" target="_blank" class="p-3 rounded-full social-icon bg-[color:var(--card)]" aria-label="linkedin"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.github.com/dani-techno" target="_blank" class="p-3 rounded-full social-icon bg-[color:var(--card)]" aria-label="github"><i class="fab fa-github"></i></a>
+            <a href="https://www.facebook.com/dani.joest" target="_blank" class="p-3 rounded-full social-icon bg-[color:var(--card)]" aria-label="instagram"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.instagram.com/dani_joest" target="_blank" class="p-3 rounded-full social-icon bg-[color:var(--card)]" aria-label="instagram"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.youtube.com/@dani_techno" target="_blank" class="p-3 rounded-full social-icon bg-[color:var(--card)]" aria-label="youtube"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="p-6 rounded-xl card" style="background:var(--card);">
+          <h3 class="text-xl font-semibold mb-6">Send Me a Message</h3>
+          <form class="space-y-6" action="https://wa.me/6282320667363" method="get" target="_blank" onsubmit="return combineInputs()">
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <input id="name" name="name" class="modern-input" placeholder="Your name" type="text" required />
+              </div>
+              <div>
+                <select id="subject" name="subject" class="modern-input" required>
+                  <option value="" disabled selected>Select inquiry type</option>
+                  <option value="Project Inquiry">Project Inquiry</option>
+                  <option value="Partnership">Partnership Opportunity</option>
+                  <option value="Career">Career Opportunity</option>
+                  <option value="Other">Other Question</option>
+                </select>
+              </div>
+            </div>
+
+            <div>
+              <textarea id="message" name="message" class="modern-input" placeholder="Describe your project or inquiry..." rows="4" required></textarea>
+            </div>
+
+            <input type="hidden" id="combinedText" name="text" value="">
+
+            <button type="submit" class="w-full py-3 px-6 bg-gradient-to-r from-green-500 to-green-600 text-white font-semibold rounded-lg"> <i class="fab fa-whatsapp text-lg"></i> Send via WhatsApp</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 border-t mt-6" style="border-color: rgba(255,255,255,0.04);">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      <p class="text-sm text-[color:var(--muted)]">&copy; 2025 Dani Joest. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Scroll-to-top button -->
+  <button id="scroll-top" class="scroll-top" aria-label="Scroll to top" title="Back to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <script>
+    // inject modern input styles
+    (function styleModernInputs(){
+      const css = `.modern-input{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0)); border:1px solid rgba(15,23,36,0.06); padding:.75rem 1rem; border-radius:10px; box-shadow: var(--input-shadow); color:var(--text); width:100%; transition: transform .12s, box-shadow .12s; } .modern-input:focus{transform:translateY(-2px); box-shadow:0 10px 30px rgba(2,6,23,0.08); border-color: rgba(57,197,179,0.32);} .dark .modern-input{background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00)); border:1px solid rgba(255,255,255,0.04); box-shadow: inset 0 1px 0 rgba(255,255,255,0.02), 0 8px 24px rgba(2,6,23,0.45);} `;
+      const s = document.createElement('style'); s.textContent = css; document.head.appendChild(s);
+    })();
+
+    function downloadCV(lang) { const fileName = lang === 'id' ? './media/CV Dani Joest (Lang-ID).pdf' : './media/CV Dani Joest (Lang-EN).pdf'; window.location.href = fileName; }
+
+    // Offcanvas controls
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const offcanvas = document.getElementById('mobile-offcanvas');
+    const offcanvasBackdrop = document.getElementById('offcanvas-backdrop');
+    const offcanvasClose = offcanvas.querySelector('.close-btn');
+
+    function openOffcanvas(){ offcanvas.classList.add('open'); offcanvas.setAttribute('aria-hidden','false'); offcanvasBackdrop.classList.add('visible'); mobileMenuButton.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
+    function closeOffcanvas(){ offcanvas.classList.remove('open'); offcanvas.setAttribute('aria-hidden','true'); offcanvasBackdrop.classList.remove('visible'); mobileMenuButton.setAttribute('aria-expanded','false'); document.body.style.overflow='auto'; }
+
+    if(mobileMenuButton) mobileMenuButton.addEventListener('click', () => { const isOpen = offcanvas.classList.contains('open'); isOpen ? closeOffcanvas() : openOffcanvas(); });
+    if(offcanvasClose) offcanvasClose.addEventListener('click', closeOffcanvas);
+    if(offcanvasBackdrop) offcanvasBackdrop.addEventListener('click', closeOffcanvas);
+
+    // Close offcanvas when any nav link inside it is clicked and navigate smoothly
+    const offLinks = offcanvas.querySelectorAll('.off-link');
+    offLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const href = link.getAttribute('href');
+        closeOffcanvas();
+        // allow the close animation to finish before scrolling
+        setTimeout(() => {
+          const target = document.querySelector(href);
+          if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          else window.location.href = href;
+        }, 280);
+      });
+    });
+
+    // mobile theme button logic (next to hamburger)
+    const mobileThemeButton = document.getElementById('mobile-theme-button');
+    const mobileThemeIcon = document.getElementById('mobile-theme-icon');
+
+    function toggleThemeByUser(){ const isDark = document.documentElement.classList.contains('dark'); setDarkMode(!isDark, true); }
+    if(mobileThemeButton) mobileThemeButton.addEventListener('click', toggleThemeByUser);
+
+    // theme handling
+    const themeKey = 'theme-preference';
+    const themeToggle = document.getElementById('theme-toggle');
+    const themeIcon = document.getElementById('theme-icon');
+    const themeText = document.getElementById('theme-text');
+
+    function setDarkMode(enabled, save = true){ if(enabled) { document.documentElement.classList.add('dark'); if(save) localStorage.setItem(themeKey,'dark'); } else { document.documentElement.classList.remove('dark'); if(save) localStorage.setItem(themeKey,'light'); } refreshThemeUI(); }
+    function refreshThemeUI(){ const isDark = document.documentElement.classList.contains('dark'); if(isDark){ themeIcon.className='fas fa-moon'; if(themeText) themeText.textContent='Dark'; if(mobileThemeIcon) mobileThemeIcon.className='fas fa-moon'; } else { themeIcon.className='fas fa-sun text-yellow-400'; if(themeText) themeText.textContent='Light'; if(mobileThemeIcon) mobileThemeIcon.className='fas fa-sun text-yellow-400'; } }
+
+    (function applyInitialTheme(){ const saved = localStorage.getItem(themeKey); if(saved==='dark') setDarkMode(true,false); else if(saved==='light') setDarkMode(false,false); else setDarkMode(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches,false); })();
+    if(themeToggle) themeToggle.addEventListener('click', toggleThemeByUser);
+
+    // form combine
+    function combineInputs(){ const name=document.getElementById('name').value; const subject=document.getElementById('subject').value; const message=document.getElementById('message').value; const combinedText = `Hello, Tn. Dani Joest.
+
+*Name:* ${name}
+*Subject:* ${subject}
+*Message:* ${message}`; document.getElementById('combinedText').value = combinedText; return true; }
+
+    // reveal + parallax + progress
+    (function(){ const items=document.querySelectorAll('[data-reveal]'); if(!('IntersectionObserver' in window)) { items.forEach(i=>i.classList.add('revealed')); return; } const obs=new IntersectionObserver((entries)=>{ entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); obs.unobserve(e.target); } }); },{ threshold:0.18 }); items.forEach(i=>{ i.classList.add('reveal'); obs.observe(i); });
+
+      const paras=document.querySelectorAll('[data-parallax]'); function onScroll(){ const scrolled=window.scrollY; paras.forEach(el=>{ const speed=parseFloat(el.getAttribute('data-parallax')||0.12); el.style.transform = `translateY(${scrolled * speed * -1}px)`; }); const docH=document.documentElement.scrollHeight - window.innerHeight; const progress = docH>0?Math.min(100,(window.scrollY/docH)*100):0; document.getElementById('scroll-progress').style.width = progress + '%';
+
+        // show/hide scroll-top button
+        const st = document.getElementById('scroll-top'); if(window.scrollY > 320) st.classList.add('show'); else st.classList.remove('show'); }
+      window.addEventListener('scroll', onScroll, {passive:true}); onScroll(); })();
+
+    // scroll-top behavior
+    const scrollTopBtn = document.getElementById('scroll-top');
+    scrollTopBtn.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+    // smooth scroll for desktop nav links and auto-close offcanvas handled above for mobile
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', function(e){
+        // internal links only
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        if(href.startsWith('#')){
+          e.preventDefault();
+          const target = document.querySelector(href);
+          if(target){
+            // if offcanvas is open, close first
+            if(offcanvas.classList.contains('open')){ closeOffcanvas(); setTimeout(()=> target.scrollIntoView({behavior:'smooth', block:'start'}), 260); }
+            else target.scrollIntoView({behavior:'smooth', block:'start'});
+          }
+        }
+      });
+    });
+
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeOffcanvas(); });
+  </script>
+</body>
+
+</html>
